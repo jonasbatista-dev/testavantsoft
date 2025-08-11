@@ -1,0 +1,64 @@
+.ant-layout-content {
+  padding: 20px 40px 40px 40px;
+
+  min-height: 500px;
+
+  &.chart {
+    padding-bottom: 20px;
+    min-height: 100vh;
+    .content {
+      background-color: #fff;
+      border: 1px solid #f8f8f8;
+      border-radius: 5px;
+      padding: 24px;
+      margin-bottom: 50px !important;
+
+    }
+  }
+
+  &.transparent {
+    padding: 20px;
+    min-height: 0px;
+
+    .content {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    @media (max-width: 960px) {
+      padding: 20px 0px 40px 0px;
+
+      .content {
+
+        width: 100%;
+      }
+
+    }
+  }
+
+
+}
+
+.light {
+
+  .content {
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    border-radius: 5px;
+    padding: 24px;
+    margin-bottom: 50px !important;
+    height: auto;
+  }
+
+}
+
+.dark {
+
+  .content {
+    background-color: #001529;
+    padding: 24px;
+  }
+
+
+
+}

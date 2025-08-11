@@ -1,0 +1,57 @@
+.Menu {
+
+
+
+  .close {
+    position: absolute;
+    right: 30px;
+    top: 35px;
+    z-index: 999;
+    color: #fff;
+  }
+
+  @media (max-width: 960px) {
+    left: -100dvw;
+    position: absolute !important;
+    top: 0px;
+    width: 100dvw !important;
+    z-index: 998;
+
+
+    &.open {
+      left: 0px;
+      position: absolute !important;
+      top: 0px;
+      width: 100dvw !important;
+      z-index: 998;
+    }
+  }
+}
+
+
+.ant-layout-sider-children,
+.ant-menu {
+  height: 100vh !important;
+}
+
+.titleMenu {
+  padding: 40px 20px 20px 30px;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.light {
+  .titleMenu {
+    color: #000;
+    background-color: #fff;
+  }
+
+  .close {
+    color: #000
+  }
+}
+
+.ant-menu {
+  padding-top: 20px;
+}

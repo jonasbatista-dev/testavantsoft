@@ -1,0 +1,61 @@
+.app {
+
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+
+  .ant-layout {
+    flex: auto;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .ant-empty-description {
+    color: #707070;
+  }
+
+  &.light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  &.dark {
+    background-color: #1d1d1d;
+    color: #ffffff;
+
+    .openMenu {
+      color: #fff;
+    }
+
+  }
+
+  .ant-btn-primary {
+    width: 100%;
+    margin-bottom: -3px;
+
+  }
+
+  .openMenu {
+    position: absolute;
+    left: 30px;
+    top: 35px;
+    z-index: 999;
+    display: none;
+    color: #000;
+  }
+
+  @media (max-width: 960px) {
+    .openMenu {
+      display: block;
+
+
+      &.none {
+        display: none;
+      }
+    }
+  }
+
+}
