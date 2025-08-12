@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import {
   BarChartOutlined,
   CloseOutlined,
-  FileAddOutlined,
+  UserAddOutlined,
   UnorderedListOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -13,18 +13,18 @@ import { useTheme } from '../../Layout/ThemeContext';
 
 import { Button, Menu as MenuAntd, Layout, Avatar } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/Api/AuthContext';
+import { useAuth } from '@/Service/AuthContext';
 
 const items = [
   {
-    key: '/form',
-    icon: <FileAddOutlined />,
-    label: 'Nova Tarefa',
+    key: '/client/add',
+    icon: <UserAddOutlined />,
+    label: 'Clientes',
   },
   {
-    key: '/list',
+    key: '/client/list',
     icon: <UnorderedListOutlined />,
-    label: 'Lista de Tarefas',
+    label: 'Lista de Clientes',
   },
   {
     key: '/report',

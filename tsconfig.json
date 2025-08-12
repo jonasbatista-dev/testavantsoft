@@ -24,7 +24,7 @@
     "noUnusedParameters": true,
     "strict": false,
     //types
-    "types": ["@testing-library/jest-dom"],
+    "types": ["@testing-library/jest-dom", "node"],
 
     // paths
     "paths": {

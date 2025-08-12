@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Layout } from 'antd';
 
 import { useTheme } from './ThemeContext';
-import { useAuth } from '@/Api/AuthContext';
+import { useAuth } from '@/Service/AuthContext';
 import Menu from '@/Components/Menu';
 import RoutesPrivate from '@/Routes/Private';
 import RoutesAuth from '@/Routes/Auth';

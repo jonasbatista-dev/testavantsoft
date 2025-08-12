@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
 
 import Card from './';
-import { useService } from '../../Api/ApiServiceContext';
+import { useService } from '../../Service/ApiServiceContext';
 
 type tasksType = {
   title: string;

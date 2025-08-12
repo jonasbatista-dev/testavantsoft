@@ -1,5 +1,4 @@
 .card {
-
   background-color: #fff;
   border-color: 1px solid #f8f8f8;
   border-radius: 8px;
@@ -9,15 +8,33 @@
   @media (max-width: 960px) {
     .ant-row {
       padding-right: 15px;
+      position: relative;
+
+      .ant-btn {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
     }
   }
 
-  &.move {
-    cursor: move;
-  }
+  .ant-col {
+    display: flex;
+    text-align: justify;
 
-  .completed {
-    text-decoration: line-through;
+    &:nth-child(1) {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    @media (min-width: 960px) {
+      flex: 1;
+      font-weight: normal;
+
+      &:nth-child(1) {
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
   }
 }
 

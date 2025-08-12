@@ -4,8 +4,8 @@ import { ThemeProvider } from './Layout/ThemeContext';
 import './App.scss';
 
 import Main from './Layout/Main';
-import { ServiceProvider } from './Api/ApiServiceContext';
-import { AuthProvider } from './Api/AuthContext';
+import { ServiceProvider } from './Service/ApiServiceContext';
+import { AuthProvider } from './Service/AuthContext';
 
 const App = () => {
   return (

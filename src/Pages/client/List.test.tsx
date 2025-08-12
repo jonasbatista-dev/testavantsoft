@@ -1,6 +1,6 @@
 // __tests__/List.test.tsx
 import { render, screen, waitFor } from '@testing-library/react';
-import { useService } from '../../Api/ApiServiceContext';
+import { useService } from '../../Service/ApiServiceContext';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
