@@ -5,16 +5,19 @@ import './App.scss';
 
 import Main from './Layout/Main';
 import { ServiceProvider } from './Api/ApiServiceContext';
+import { AuthProvider } from './Api/AuthContext';
 
 const App = () => {
   return (
-    <ServiceProvider>
-      <ThemeProvider>
-        <Router>
-          <Main />
-        </Router>
-      </ThemeProvider>
-    </ServiceProvider>
+    <ThemeProvider>
+      <Router>
+        <AuthProvider>
+          <ServiceProvider>
+            <Main />
+          </ServiceProvider>
+        </AuthProvider>
+      </Router>
+    </ThemeProvider>
   );
 };
 

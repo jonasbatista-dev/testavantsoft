@@ -3,13 +3,16 @@ import React from 'react';
 import { Button, Layout } from 'antd';
 
 import { useTheme } from './ThemeContext';
-import Menu from '../Components/Menu';
-import RoutesMain from '../Routes';
+import { useAuth } from '@/Api/AuthContext';
+import Menu from '@/Components/Menu';
+import RoutesPrivate from '@/Routes/Private';
+import RoutesAuth from '@/Routes/Auth';
 
 import { MenuOutlined } from '@ant-design/icons';
 
 const App: React.FC = () => {
   const { theme, setOpen, open } = useTheme();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Layout className={`app ${theme}`}>
@@ -19,10 +22,8 @@ const App: React.FC = () => {
         onClick={() => setOpen(true)}
         type="link"
       />
-      <Menu />
-      <Layout>
-        <RoutesMain />
-      </Layout>
+      {isAuthenticated && <Menu />}
+      <Layout>{isAuthenticated ? <RoutesPrivate /> : <RoutesAuth />}</Layout>
     </Layout>
   );
 };

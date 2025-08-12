@@ -6,12 +6,14 @@ import {
   CloseOutlined,
   FileAddOutlined,
   UnorderedListOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 
 import { useTheme } from '../../Layout/ThemeContext';
 
-import { Button, Menu as MenuAntd, Layout } from 'antd';
+import { Button, Menu as MenuAntd, Layout, Avatar } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/Api/AuthContext';
 
 const items = [
   {
@@ -33,6 +35,7 @@ const items = [
 
 const Menu: React.FC = () => {
   const { theme, open, setOpen } = useTheme();
+  const { user, logout } = useAuth();
   const [openKeys, setOpenKeys] = useState<string[]>();
   const [selectedKeys, setSelectedKeys] = useState<string[]>();
 
@@ -63,8 +66,12 @@ const Menu: React.FC = () => {
         width={open ? '100dvw' : 200}
         className={`Menu ${open && 'open'}`}
       >
-        <div className="titleMenu">
-          <h3>To Do List</h3>
+        <div className="avatar">
+          <Avatar size={50} icon={<UserOutlined />} />
+          <div>
+            <p>{user.name}</p>
+            <a onClick={logout}>Sair</a>
+          </div>
         </div>
 
         <MenuAntd
