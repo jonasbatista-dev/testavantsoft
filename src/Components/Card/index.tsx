@@ -1,6 +1,6 @@
 import './Card.scss';
-import { EditFilled } from '@ant-design/icons';
-import { Button, Col, Row } from 'antd';
+import { DollarOutlined } from '@ant-design/icons';
+import { Button, Col, Row, Tooltip } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
@@ -40,9 +40,10 @@ interface Props {
   client: clientType;
   index?: number;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
-const Card: React.FC<Props> = ({ client }) => {
+const Card: React.FC<Props> = ({ client, onClick }) => {
   const navigate = useNavigate();
   return (
     <div className={`card`}>
@@ -60,10 +61,12 @@ const Card: React.FC<Props> = ({ client }) => {
         </Col>
 
         <Button
-          onClick={() => {
-            navigate(`/client/add/${client?.id}`);
-          }}
-          icon={<EditFilled />}
+          onClick={() => onClick()}
+          icon={
+            <Tooltip title="Nova Venda">
+              <DollarOutlined />
+            </Tooltip>
+          }
           type="link"
         />
       </Row>

@@ -8,6 +8,7 @@ type Venda = {
 };
 
 type Cliente = {
+  id: string;
   info: {
     nomeCompleto: string;
     detalhes: {
@@ -90,9 +91,13 @@ export function makeServer({ environment = 'development' } = {}) {
     routes() {
       this.namespace = 'api';
 
-      // GET - Lista de clientes (estrutura bagunçada)
+      // GET - Lista de clientes (agora com id interno do Mirage exposto)
       this.get('/clientes', (schema) => {
-        const clientes = schema.all('cliente').models;
+        const clientes = schema.all('cliente').models.map((c) => ({
+          id: c.id,
+          ...c.attrs,
+        }));
+
         return {
           data: {
             clientes,
@@ -120,10 +125,10 @@ export function makeServer({ environment = 'development' } = {}) {
           },
           estatisticas: { vendas: [] },
         });
-        return novo;
+        return { id: novo.id, ...novo.attrs };
       });
 
-      // POST - Adicionar venda a um cliente
+      // POST - Adicionar venda a um cliente pelo id interno
       this.post('/vendas', (schema, request) => {
         const { clienteId, data, valor } = JSON.parse(request.requestBody);
         const cliente: any = schema.find('cliente', clienteId);
@@ -134,7 +139,7 @@ export function makeServer({ environment = 'development' } = {}) {
 
         cliente.attrs.estatisticas.vendas.push({ data, valor });
         cliente.save();
-        return cliente;
+        return { id: cliente.id, ...cliente.attrs };
       });
 
       // GET - Estatísticas agregadas
@@ -152,22 +157,18 @@ export function makeServer({ environment = 'development' } = {}) {
           const media = vendas.length > 0 ? total / vendas.length : 0;
           const freq = vendas.length;
 
-          // Acumula vendas por dia
           vendas.forEach((v) => {
             vendasPorDia[v.data] = (vendasPorDia[v.data] || 0) + v.valor;
           });
 
-          // Maior volume
           if (total > maiorVolume.total) {
             maiorVolume = { cliente: c.attrs.info.nomeCompleto, total };
           }
 
-          // Maior média
           if (media > maiorMedia.media) {
             maiorMedia = { cliente: c.attrs.info.nomeCompleto, media };
           }
 
-          // Maior frequência
           if (freq > maiorFrequencia.quantidade) {
             maiorFrequencia = {
               cliente: c.attrs.info.nomeCompleto,

@@ -1,79 +1,55 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Column } from '@ant-design/plots';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
 
-// Registrando os componentes do Chart.js
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-);
-
-interface Task {
-  title: string;
-  order: number;
-  completed: boolean;
-}
-
-interface TaskChartProps {
-  tasks: Task[];
-}
-
-const TaskChart: React.FC<TaskChartProps> = ({ tasks }) => {
-  const completedTasks = tasks.filter((task) => task.completed).length;
-  const pendingTasks = tasks.filter((task) => !task.completed).length;
-  const totalTasks = tasks.length;
-
-  const data = {
-    labels: ['Tarefas'],
-    datasets: [
-      {
-        label: 'Feita',
-        data: [completedTasks],
-        backgroundColor: 'green',
-      },
-      {
-        label: 'Por Fazer',
-        data: [pendingTasks],
-        backgroundColor: 'red',
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top' as const,
-      },
-      title: {
-        display: true,
-        text: 'Status das Tarefas',
-      },
-      tooltip: {
-        callbacks: {
-          label: function (context: any) {
-            const value = context.raw;
-            const percentage = ((value / totalTasks) * 100).toFixed(2);
-            return `${context.dataset.label}: ${value} (${percentage}%)`;
-          },
-        },
-      },
-    },
-  };
-
-  return <Bar data={data} options={options} />;
+type Props = {
+  data: any;
 };
 
-export default TaskChart;
+const DemoDefaultTooltip: React.FC<Props> = ({ data }) => {
+  const [currentData, setCurrentData] = useState([]);
+
+  useEffect(() => {
+    const newDate = [];
+    if (data) {
+      Object.keys(data).forEach((key) => {
+        console.log(data[key]);
+        newDate.push({
+          dia: dayjs(key).format('DD/MM/YYYY'),
+          total: data[key],
+        });
+      });
+    }
+    setCurrentData(newDate);
+    console.log(newDate);
+  }, [data]);
+
+  const config = {
+    data: currentData,
+    xField: 'dia',
+    yField: 'total',
+    onReady: ({ chart }) => {
+      try {
+        const { height } = chart._container.getBoundingClientRect();
+        const tooltipItem = data[Math.floor(Math.random() * data.length)];
+        chart.on(
+          'afterrender',
+          () => {
+            chart.emit('tooltip:show', {
+              data: {
+                data: tooltipItem,
+              },
+              offsetY: height / 2 - 60,
+            });
+          },
+          true,
+        );
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  };
+  return <Column {...config} />;
+};
+
+export default DemoDefaultTooltip;

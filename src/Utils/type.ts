@@ -4,6 +4,7 @@ type typesSale = {
 };
 
 export type typesClients = {
+  id: string;
   info: {
     nomeCompleto: string;
     detalhes: {

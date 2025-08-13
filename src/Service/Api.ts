@@ -19,7 +19,7 @@ export async function createClient(
 }
 
 export async function addVenda(clienteId: string, data: string, valor: number) {
-  const res = await api.post(`/clientes/${clienteId}/vendas`, { data, valor });
+  const res = await api.post(`/vendas`, { clienteId, data, valor });
   return res.data;
 }
 
