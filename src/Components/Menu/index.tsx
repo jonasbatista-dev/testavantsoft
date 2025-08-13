@@ -13,13 +13,13 @@ import { useTheme } from '../../Layout/ThemeContext';
 
 import { Button, Menu as MenuAntd, Layout, Avatar } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/Service/AuthContext';
+import { useAuth } from '../../Service/AuthContext';
 
 const items = [
   {
     key: '/client/add',
     icon: <UserAddOutlined />,
-    label: 'Clientes',
+    label: 'Novo Cliente',
   },
   {
     key: '/client/list',
@@ -69,7 +69,7 @@ const Menu: React.FC = () => {
         <div className="avatar">
           <Avatar size={50} icon={<UserOutlined />} />
           <div>
-            <p>{user.name}</p>
+            <p>{user?.name ?? '--'}</p>
             <a onClick={logout}>Sair</a>
           </div>
         </div>

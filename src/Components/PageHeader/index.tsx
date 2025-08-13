@@ -1,5 +1,5 @@
-import { useTheme } from '@/Layout/ThemeContext';
-import '@/Components/PageHeader/PageHeader.scss';
+import { useTheme } from '../../Layout/ThemeContext';
+import './PageHeader.scss';
 
 import { Layout, Switch } from 'antd';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';

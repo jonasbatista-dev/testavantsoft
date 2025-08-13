@@ -1,5 +1,5 @@
 import React from 'react';
-import '@/Components/Chart/Chart.scss';
+import './Chart.scss';
 
 type Props = {
   title: string;

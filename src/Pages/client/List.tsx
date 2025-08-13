@@ -4,7 +4,6 @@ import Content from '../../Components/Content';
 import PageHeader from '../../Components/PageHeader';
 
 import {
-  App,
   Button,
   Col,
   Form,
@@ -13,6 +12,7 @@ import {
   Row,
   Skeleton,
   Typography,
+  message,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { getClients, addVenda } from '@/Service/Api';
@@ -42,7 +42,6 @@ const normalize = (clients: typesClients[]) => {
 };
 
 const ListClients: React.FC = () => {
-  const { message } = App.useApp();
   const [loading, setLoading] = useState(true);
   const [currentClient, setCurrentClient] = useState<any>();
 
@@ -52,6 +51,7 @@ const ListClients: React.FC = () => {
     try {
       await addVenda(submit?.id, submit?.date, submit?.value);
       setCurrentClient(null);
+      return message.success({ content: 'Venda cadastrada com sucesso!' });
     } catch (error) {
       console.log(error);
     }

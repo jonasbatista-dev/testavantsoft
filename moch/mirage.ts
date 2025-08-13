@@ -1,4 +1,3 @@
-// src/mirage.ts
 import { createServer, Model, Factory, Response } from 'miragejs';
 import { faker } from '@faker-js/faker';
 
@@ -91,7 +90,6 @@ export function makeServer({ environment = 'development' } = {}) {
     routes() {
       this.namespace = 'api';
 
-      // GET - Lista de clientes (agora com id interno do Mirage exposto)
       this.get('/clientes', (schema) => {
         const clientes = schema.all('cliente').models.map((c) => ({
           id: c.id,
@@ -112,7 +110,6 @@ export function makeServer({ environment = 'development' } = {}) {
         };
       });
 
-      // POST - Cadastrar cliente
       this.post('/clientes', (schema, request) => {
         const attrs = JSON.parse(request.requestBody);
         const novo = schema.create('cliente', {
@@ -128,7 +125,6 @@ export function makeServer({ environment = 'development' } = {}) {
         return { id: novo.id, ...novo.attrs };
       });
 
-      // POST - Adicionar venda a um cliente pelo id interno
       this.post('/vendas', (schema, request) => {
         const { clienteId, data, valor } = JSON.parse(request.requestBody);
         const cliente: any = schema.find('cliente', clienteId);
@@ -142,7 +138,6 @@ export function makeServer({ environment = 'development' } = {}) {
         return { id: cliente.id, ...cliente.attrs };
       });
 
-      // GET - Estatísticas agregadas
       this.get('/estatisticas', (schema) => {
         const clientes: any[] = schema.all('cliente').models;
 
