@@ -16,7 +16,6 @@ const Report: React.FC = () => {
   const handleData = () => {
     getEstatisticas()
       .then((resp: any) => {
-        console.log(resp);
         setData(resp);
         setLoading(false);
       })

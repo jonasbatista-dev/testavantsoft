@@ -53,7 +53,7 @@ const ListClients: React.FC = () => {
       setCurrentClient(null);
       return message.success({ content: 'Venda cadastrada com sucesso!' });
     } catch (error) {
-      console.log(error);
+      message.error(error);
     }
   };
 
@@ -63,7 +63,7 @@ const ListClients: React.FC = () => {
         const { data } = await getClients();
         if (data?.clientes?.length) {
           const clients = normalize(data?.clientes);
-          console.log(clients);
+
           setClients(clients);
         }
         setLoading(false);
@@ -125,13 +125,12 @@ const ListClients: React.FC = () => {
 
               <Form
                 onFinish={(submit: any) => {
-                  console.log(submit);
                   submit.id = currentClient?.id;
                   submit.value = Number(submit.value);
                   submit.date = dayjs(submit.date, 'DD/MM/YYYY').format(
                     'YYYY-MM-DD',
                   );
-                  console.log(submit.date);
+
                   registerSales(submit);
                 }}
                 layout="vertical"

@@ -13,7 +13,6 @@ const DemoDefaultTooltip: React.FC<Props> = ({ data }) => {
     const newDate = [];
     if (data) {
       Object.keys(data).forEach((key) => {
-        console.log(data[key]);
         newDate.push({
           dia: dayjs(key).format('DD/MM/YYYY'),
           total: data[key],
@@ -21,7 +20,6 @@ const DemoDefaultTooltip: React.FC<Props> = ({ data }) => {
       });
     }
     setCurrentData(newDate);
-    console.log(newDate);
   }, [data]);
 
   const config = {
