@@ -1,5 +1,5 @@
 :root {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,4 +20,9 @@ body,
   margin: 0px;
   box-sizing: border-box;
 
+  @media (forced-colors: active) {
+    /* Estilos para modo de alto contraste */
+    background-color: Window;
+    color: WindowText;
+  }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, Layout } from 'antd';
 
-import { useTheme } from './ThemeContext';
+import { useTheme } from '@/Layout/ThemeContext';
 import { useAuth } from '@/Service/AuthContext';
 import Menu from '@/Components/Menu';
 import RoutesPrivate from '@/Routes/Private';

@@ -32,7 +32,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const loggedUser = { id: '1', name: 'Admin', email };
       setUser(loggedUser);
       localStorage.setItem('user', JSON.stringify(loggedUser));
-      navigate('/dashboard');
+      localStorage.setItem('islogged', '1');
+      navigate('/');
       return true;
     } else {
       alert('Credenciais inválidas!');
@@ -43,7 +44,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
-    navigate('/login');
+    localStorage.removeItem('islogged');
+    window.location.reload();
   };
 
   useEffect(() => {

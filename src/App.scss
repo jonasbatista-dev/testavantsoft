@@ -1,4 +1,8 @@
 .app {
+  @media (forced-colors: active) {
+    background-color: Window;
+    color: WindowText;
+  }
 
   width: 100vw;
   height: 100vh;
@@ -29,13 +33,11 @@
     .openMenu {
       color: #fff;
     }
-
   }
 
   .ant-btn-primary {
     width: 100%;
     margin-bottom: -3px;
-
   }
 
   .openMenu {
@@ -51,11 +53,9 @@
     .openMenu {
       display: block;
 
-
       &.none {
         display: none;
       }
     }
   }
-
 }
