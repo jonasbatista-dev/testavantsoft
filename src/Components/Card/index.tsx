@@ -2,7 +2,6 @@ import './Card.scss';
 import { DollarOutlined } from '@ant-design/icons';
 import { Button, Col, Row, Tooltip } from 'antd';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 import { useMemo } from 'react';
@@ -44,7 +43,6 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ client, onClick }) => {
-  const navigate = useNavigate();
   return (
     <div className={`card`}>
       <Row justify={'space-between'} align={'middle'} gutter={16}>

@@ -4,7 +4,7 @@ import { ThemeProvider } from './Layout/ThemeContext';
 import './App.scss';
 
 import Main from './Layout/Main';
-import { ServiceProvider } from './Service/ApiServiceContext';
+
 import { AuthProvider } from './Service/AuthContext';
 
 const App = () => {
@@ -12,9 +12,7 @@ const App = () => {
     <ThemeProvider>
       <Router>
         <AuthProvider>
-          <ServiceProvider>
-            <Main />
-          </ServiceProvider>
+          <Main />
         </AuthProvider>
       </Router>
     </ThemeProvider>

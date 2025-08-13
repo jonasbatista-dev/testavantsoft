@@ -1,3 +1,4 @@
+import ChartCard from '@/Components/Chart/CardChart';
 import Chart from '../Components/Chart';
 import Content from '../Components/Content';
 import PageHeader from '../Components/PageHeader';
@@ -33,17 +34,50 @@ const Report: React.FC = () => {
           <Skeleton />
         </Content>
       ) : (
-        <Content type="chart">
-          <Row align={'middle'} gutter={[16, 20]}>
-            <Col span={24}>
-              {data?.vendasPorDia ? (
-                <Chart data={data?.vendasPorDia} />
-              ) : (
-                <Empty description="Sem dados! Cadastre novas tarefas." />
-              )}
+        <>
+          <Row className="report" gutter={[16, 20]}>
+            <Col span={24} md={8}>
+              <ChartCard
+                color="purple-dark"
+                title="Maior volume de vendas"
+                content={data?.destaques?.maiorVolume?.total}
+                client={data?.destaques?.maiorVolume?.cliente}
+                currency
+              />
+            </Col>
+            <Col span={24} md={8}>
+              <ChartCard
+                color="purple-light"
+                title="Maior média de valor por venda"
+                content={data?.destaques?.maiorMedia?.media}
+                client={data?.destaques?.maiorMedia?.cliente}
+                currency
+              />
+            </Col>
+            <Col span={24} md={8}>
+              <ChartCard
+                title="Frequência de compra"
+                content={data?.destaques?.maiorFrequencia?.quantidade}
+                client={data?.destaques?.maiorFrequencia?.cliente}
+              />
             </Col>
           </Row>
-        </Content>
+
+          <Content type="chart">
+            <Row align={'middle'} gutter={[16, 20]}>
+              <Col>
+                <strong>Vendas totais por dia</strong>
+              </Col>
+              <Col span={24}>
+                {data?.vendasPorDia ? (
+                  <Chart data={data?.vendasPorDia} />
+                ) : (
+                  <Empty description="Sem dados! Cadastre novas vendas." />
+                )}
+              </Col>
+            </Row>
+          </Content>
+        </>
       )}
     </>
   );

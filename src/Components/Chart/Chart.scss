@@ -10,3 +10,36 @@
     font-size: 12px;
   }
 }
+
+.cardChart {
+  color: #fff;
+  padding: 10px 20px 20px 20px;
+  border-radius: 5px;
+
+  .title {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .infos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .client {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  &.purple-dark {
+    background-color: #2e193d;
+  }
+  &.purple-light {
+    background-color: #563062;
+  }
+  &.slate-blue {
+    background-color: #55637e;
+  }
+}

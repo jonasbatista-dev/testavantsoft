@@ -1,9 +1,4 @@
 .app {
-  @media (forced-colors: active) {
-    background-color: Window;
-    color: WindowText;
-  }
-
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -15,6 +10,11 @@
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
+    .ant-row {
+      &.report {
+        padding: 20px 40px 0px 40px;
+      }
+    }
   }
 
   .ant-empty-description {
